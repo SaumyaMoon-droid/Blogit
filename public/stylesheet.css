@@ -33,8 +33,6 @@ h2{
     flex-direction : column;
 }
 
-
-
 #signin{
     display:flex;
     flex-direction : column;
@@ -74,12 +72,12 @@ position:absolute;
 
 #post{
     position: absolute;
-    left: 200px;
     height: 200px;
     width: 500px;
-    top: 200px;
     padding: 10px;
     background-color: rgb(255, 246, 234);
+     top: 50px;
+    right: 10px;
 }
 
 .postbtn{
@@ -109,14 +107,14 @@ position:absolute;
 }
 .fypbox{
     border: solid 2px brown ;
-    width: 300px;
+    width: 800px;
     background-color: rgb(254, 243, 230);
     padding: 20px;
     margin: 20px auto;
     border-radius: 8px;
     position: absolute;
-    top: 1px;
-    right: 10px;
+    left: 50px;
+    top: 200px;
 }
 
 .postbtn:hover{
@@ -126,11 +124,12 @@ position:absolute;
 .logout1{
      background-color: brown;
     color:bisque;
-    position: absolute;
-    left: 200px;
-    top: 600px;
+    position: fixed;
+    top: 20px;
+    right: 24px;
     height: 30px;
     width: 75px;
+    z-index: 2;
     transition: background-color 0.25s;
     border-radius: 8px;
 }
@@ -158,3 +157,112 @@ background-color: rgb(64, 16, 16);
     width: 100px;                   
     border-radius: 8px;
 }
+
+#cpost{
+    position: absolute;
+    top: 150px;
+    left: calc(50% + 350px);
+    width: 260px;
+    justify-content: flex-start;
+    margin: 0;
+    color: brown;
+    font-size: 22px;
+}
+
+form:not(#login):not(#signin){
+    position: absolute;
+    top: 190px;
+    left: calc(50% + 350px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+    width: 260px;
+    padding: 16px;
+    border: 2px solid brown;
+    border-radius: 8px;
+    background-color: rgb(255, 246, 234);
+}
+
+#title,
+#tags{
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: brown;
+}
+
+#title input,
+#tags input,
+#post{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    background-color: rgb(255, 246, 234);
+    color: brown;
+    font: inherit;
+}
+
+#post{
+    position: static;
+    height: 140px;
+    resize: vertical;
+}
+
+.postbtn{
+    position: static;
+    width: 100%;
+    height: 38px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fypbox{
+    top: 175px;
+    left: calc(50% - 400px);
+    box-sizing: border-box;
+    width: 700px;
+    padding: 20px;
+    border-color: brown;
+    background-color: rgb(254, 243, 230);
+}
+
+#feed{
+    position: static;
+    justify-content: flex-start;
+    margin: 0 0 16px;
+    color: brown;
+}
+
+.fypbox > div{
+    margin-bottom: 14px;
+    padding: 14px;
+    border: 1px solid brown;
+    border-radius: 6px;
+    background-color: rgb(255, 246, 234);
+    overflow-wrap: anywhere;
+}
+
+.fypbox > div > div{
+    width: 100% !important;
+    background-color: rgb(255, 246, 234) !important;
+}
+
+/* @media (max-width: 760px){
+    #cpost,
+    form:not(#login):not(#signin),
+    .fypbox{
+        position: static;
+        width: min(92%, 480px);
+        margin: 18px auto;
+    }
+
+    #cpost{
+        justify-content: center;
+        text-align: center;
+    }
+} */

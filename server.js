@@ -38,10 +38,15 @@ app.post("/api/posts",(req,res)=>{
 })
 
 app.get("/api/posts",(req,res)=>{
-    const sql=`SELECT POSTS.*,USERS.USERNAME 
-    FROM posts
-    JOIN USERS ON POSTS.user_ID=users.ID
-    ORDER BY POSTS.CREATED_AT DESC;
+    const sql=`SELECT POSTS.*,USERS.USERNAME, 
+            (
+                SELECT COUNT (*)
+                FROM LIKES
+                WHERE LIKES.postId=posts.id
+            ) AS likeCount
+             FROM POSTS
+             JOIN USERS ON POSTS.user_ID=users.ID
+             ORDER BY POSTS.CREATED_AT DESC
     `;
     db.query(sql,(err,results)=>{
         if(err){
@@ -116,6 +121,46 @@ app.delete("/api/posts/:ID",(req,res)=>{
     })
 })
 
+app.post("/api/posts/:id/like",(req,res)=>{
+    const postId=req.params.id;
+    const userId=req.body.userID;
+    const checkSql=`
+    SELECT * FROM LIKES
+    WHERE userId=? AND postId=? 
+    `;
+    db.query(checkSql, [userId,postId], (err,results)=>{
+         if(err){
+            console.log("Error",err);
+            return res.status(500).json({
+                message : "error in like count"
+            });
+        }
+        if(results.length>0){
+            const deleteSql=`DELETE FROM LIKES WHERE userId=? AND postId=?`;
+            db.query(deleteSql,[userId,postId],(err)=>{
+                if(err){
+            console.log("Error",err);
+            return res.status(500).json({
+                message : "error in like count"
+            });
+        }
+        res.json({message : "Unliked!"});
+            })
+        }
+        else{
+            const insertSql=`INSERT INTO LIKES (userId,postId) VALUES (?,?)`;
+            db.query(insertSql,[userId,postId],(err)=>{
+                if(err){
+            console.log("Error",err);
+            return res.status(500).json({
+                message : "error in like count"
+            });
+        }
+        res.json({message: "Liked!"});
+            })
+        }
+    })
+})
 
 app.listen(PORT, () => {
          console.log(`Server running on http://localhost:${PORT}`);});

@@ -22,6 +22,24 @@ form.addEventListener("submit", async (event)=>{
     location.reload();
 })
 
+async function likePost(postID){
+    const userID=localStorage.getItem("userID");
+    if(!(userID)){
+        alert("please log in");
+        return ;
+    }
+    const response=await fetch(`/api/posts/${postID}/like`,{
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            userID : userID,
+        })
+    })
+    const data= await response.json();
+    console.log(data.message);
+    location.reload();
+}
+
 async function loadPosts(){
     const response=await fetch("/api/posts");
     const posts= await response.json();
@@ -38,7 +56,13 @@ async function loadPosts(){
         <h3>${post.title}</h3>
         <p><b>Posted By:</b>${post.USERNAME ?? post.username}</p>
         <p>${post.content}</p>
-
+        <p><b>${post.tags}</b></p>
+        <button 
+            onClick="likePost(${post.id})"
+            style="background-color: brown; border: none; cursor: pointer;"
+        >
+        ❤️${post.likeCount}
+        </button>
         `;
         // localStorage always returns a string, the DB returns a number -> compare as strings
         if(currentUserId !== null && String(currentUserId)===String(postOwnerId)){
