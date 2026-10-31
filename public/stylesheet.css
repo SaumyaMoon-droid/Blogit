@@ -1,0 +1,160 @@
+body{
+    background-color: bisque;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    color:brown;
+    font-size:  50px;
+}
+h2{
+    display:flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+#login{
+    display:flex;
+    flex-direction : column;
+    align-items: center;
+    gap: 20px;
+}
+#loginbtn{
+    position:absolute;
+    left: 600px;
+    bottom: 270px;
+    padding: 10px 20px;
+    background-color: brown;
+    color:bisque;
+    transition: background-color 0.25s
+}
+#lgbtn{
+ display: flex;
+    flex-direction : column;
+}
+
+
+
+#signin{
+    display:flex;
+    flex-direction : column;
+    align-items: center;
+    gap: 20px;
+}
+#signinbtn{
+position:absolute;
+    left: 600px;
+    bottom: 270px;
+    padding: 10px 20px;
+    background-color: brown;
+    color:bisque;}
+
+#snbtn{
+ display: flex;
+    flex-direction : column;
+}
+
+.mybox2{
+    border: solid 2px brown ;
+    height: 590px;
+    width: 100px;
+    background-color: rgb(232, 140, 140);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    position: absolute;
+    top: 1px;
+}
+
+#title{
+    position: absolute;
+    left: 200px;
+    color:brown;
+}
+
+#post{
+    position: absolute;
+    left: 200px;
+    height: 200px;
+    width: 500px;
+    top: 200px;
+    padding: 10px;
+    background-color: rgb(255, 246, 234);
+}
+
+.postbtn{
+    background-color: brown;
+    color:bisque;
+     position: absolute;
+    left: 630px;
+    top: 430px;
+    border-radius: 8px;
+    height: 30px;
+    width: 75px;
+    transition: background-color 0.25s
+}
+
+#tags{
+    color:brown;
+    position: absolute;
+    left: 200px;
+    top: 435px;
+}
+
+#feed{
+    position: absolute;
+    top: 40px;
+    size: 40px;
+    color: brown;
+}
+.fypbox{
+    border: solid 2px brown ;
+    width: 300px;
+    background-color: rgb(254, 243, 230);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+}
+
+.postbtn:hover{
+    background-color: rgb(103, 25, 25);
+}
+
+.logout1{
+     background-color: brown;
+    color:bisque;
+    position: absolute;
+    left: 200px;
+    top: 600px;
+    height: 30px;
+    width: 75px;
+    transition: background-color 0.25s;
+    border-radius: 8px;
+}
+
+.logout1:hover{
+background-color: rgb(64, 16, 16);
+}
+
+#boxy{
+    border: solid 2px brown;
+    height:800px;
+    width: 100px;
+    margin: 20px auto;
+    border-radius: 8px;
+    position: absolute;
+    top: 1px;
+    left: 10px;
+}
+
+.img1{
+    background-image: linear-gradient(rgba(232, 140, 140,0.5)),url("book.jpg");
+    background-repeat: repeat-y;
+    background-size: 100px 100px;   
+    height: 800px;                  
+    width: 100px;                   
+    border-radius: 8px;
+}
