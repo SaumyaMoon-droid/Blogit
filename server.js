@@ -18,6 +18,9 @@ db.connect((err)=>{
     }
 })
 app.use(express.json());
+app.get("/",(req,res)=>{
+    res.redirect("signin.html");
+});
 app.use(express.static("public"));
 app.post("/api/posts",(req,res)=>{
     const {userID,title,content,tags}=req.body;
