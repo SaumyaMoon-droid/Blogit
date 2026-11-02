@@ -17,6 +17,18 @@ body{
 }
 
 .animation-ex{
+    animation: moveUp 1s ease-out;
+}
+
+@keyframes moveUp {
+    from{
+        transform: translateY(150px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+.animation-ex3{
     animation: moveUp 2s ease-out;
 }
 
@@ -65,12 +77,11 @@ h2{
     gap: 20px;
 }
 #signinbtn{
-position:absolute;
-    left: 600px;
-    bottom: 270px;
     padding: 10px 20px;
     background-color: brown;
-    color:bisque;}
+    color:bisque;
+    border-radius: 8px;
+}
 
 #snbtn{
  display: flex;
