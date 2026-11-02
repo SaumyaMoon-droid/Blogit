@@ -1,10 +1,38 @@
 body{
-    background-color: bisque;
+    background-image: linear-gradient(rgba(232, 140, 140,0.4),rgba(0, 0, 0, 0.4)),url("blog.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center ;
+    background-attachment: fixed ;
 }
+
+.mybox{
+    border: solid 2px brown ;
+    height: 300px;
+    width: 500px;
+    background-color: rgba(232, 140, 140,0.4);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+.animation-ex{
+    animation: moveUp 2s ease-out;
+}
+
+@keyframes moveUp {
+    from{
+        transform: translateY(150px);
+    }
+    to{
+        transform: translateY(0px);
+    }
+}
+
 h1{
     display: flex;
     justify-content: center;
-    color:brown;
+    color: brown;
     font-size:  50px;
 }
 h2{
@@ -20,9 +48,6 @@ h2{
     gap: 20px;
 }
 #loginbtn{
-    position:absolute;
-    left: 600px;
-    bottom: 270px;
     padding: 10px 20px;
     background-color: brown;
     color:bisque;
@@ -91,7 +116,18 @@ position:absolute;
     width: 75px;
     transition: background-color 0.25s
 }
+.animation-ex2{
+    animation: moveLeft 2s ease-out;
+}
 
+@keyframes moveLeft {
+    from{
+        transform: translateX(50px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
 #tags{
     color:brown;
     position: absolute;
@@ -136,26 +172,6 @@ position:absolute;
 
 .logout1:hover{
 background-color: rgb(64, 16, 16);
-}
-
-#boxy{
-    border: solid 2px brown;
-    height:800px;
-    width: 100px;
-    margin: 20px auto;
-    border-radius: 8px;
-    position: absolute;
-    top: 1px;
-    left: 10px;
-}
-
-.img1{
-    background-image: linear-gradient(rgba(232, 140, 140,0.5)),url("book.jpg");
-    background-repeat: repeat-y;
-    background-size: 100px 100px;   
-    height: 800px;                  
-    width: 100px;                   
-    border-radius: 8px;
 }
 
 #cpost{
@@ -203,9 +219,13 @@ form:not(#login):not(#signin){
     border-radius: 5px;
     background-color: rgb(255, 246, 234);
     color: brown;
-    font: inherit;
 }
-
+.postbox2{
+  transition: transform 0.5s ease;
+}
+.postbox2:hover{
+    transform: translate(-10px,-10px);
+}
 #post{
     position: static;
     height: 140px;
@@ -230,6 +250,7 @@ form:not(#login):not(#signin){
     border-color: brown;
     background-color: rgb(254, 243, 230);
 }
+
 
 #feed{
     position: static;

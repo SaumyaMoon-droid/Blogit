@@ -59,7 +59,7 @@ async function loadPosts(){
         <p><b>${post.tags}</b></p>
         <button 
             onClick="likePost(${post.id})"
-            style="background-color: brown; border: none; cursor: pointer;"
+            style=" border: none; cursor: pointer;"
         >
         ❤️${post.likeCount}
         </button>
