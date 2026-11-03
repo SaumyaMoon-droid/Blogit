@@ -17,7 +17,7 @@ body{
 }
 
 .animation-ex{
-    animation: moveUp 1s ease-out;
+    animation: moveUp 1s ease-out;  
 }
 
 @keyframes moveUp {
@@ -28,18 +28,7 @@ body{
         transform: translateY(0px);
     }
 }
-.animation-ex3{
-    animation: moveUp 2s ease-out;
-}
 
-@keyframes moveUp {
-    from{
-        transform: translateY(150px);
-    }
-    to{
-        transform: translateY(0px);
-    }
-}
 
 h1{
     display: flex;
@@ -59,11 +48,16 @@ h2{
     align-items: center;
     gap: 20px;
 }
-#loginbtn{
+.loginbtn{
+    border: solid 2px brown;
+    border-radius: 8px;
     padding: 10px 20px;
     background-color: brown;
     color:bisque;
     transition: background-color 0.25s
+}
+.loginbtn:hover{
+background-color: rgb(134, 36, 36);
 }
 #lgbtn{
  display: flex;
@@ -76,11 +70,16 @@ h2{
     align-items: center;
     gap: 20px;
 }
-#signinbtn{
+.signinbtn{
+    border: solid 2px brown;
+    border-radius: 8px;
     padding: 10px 20px;
     background-color: brown;
     color:bisque;
-    border-radius: 8px;
+    transition: background-color 0.25s;
+}
+.signinbtn:hover{
+    background-color:rgb(134, 36, 36) ;
 }
 
 #snbtn{
@@ -165,7 +164,7 @@ h2{
 }
 
 .postbtn:hover{
-    background-color: rgb(103, 25, 25);
+    background-color: rgb(134, 36, 36) ;
 }
 
 .logout1{
@@ -179,10 +178,12 @@ h2{
     z-index: 2;
     transition: background-color 0.25s;
     border-radius: 8px;
+    transition: transform 0.25s;
 }
 
 .logout1:hover{
-background-color: rgb(64, 16, 16);
+background-color: rgb(134, 36, 36) ;
+transform: translate(-5px,5px);
 }
 
 #cpost{
@@ -259,7 +260,7 @@ form:not(#login):not(#signin){
     width: 700px;
     padding: 20px;
     border-color: brown;
-    background-color: rgb(254, 243, 230);
+    background-color: rgba(254, 243, 230, 0.685);
 }
 
 
@@ -278,23 +279,39 @@ form:not(#login):not(#signin){
     background-color: rgb(255, 246, 234);
     overflow-wrap: anywhere;
 }
-
+.prevpost{
+    transition: transform 0.25s;
+}
+.prevpost:hover{
+    transform: translate(0px,-10px);
+}
 .fypbox > div > div{
     width: 100% !important;
     background-color: rgb(255, 246, 234) !important;
 }
+.accbox{
+    border: solid 2px brown;
+    border-radius:8px;
+    width: 150px;
+    height: 200px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(255, 246, 234);
+    transition: transform 0.5s;
+}
 
-/* @media (max-width: 760px){
-    #cpost,
-    form:not(#login):not(#signin),
-    .fypbox{
-        position: static;
-        width: min(92%, 480px);
-        margin: 18px auto;
+.accbox:hover{
+    transform: translate(10px,10px);
+}
+.animation-ex4{
+    animation : moveRight 2s
+}
+@keyframes moveRight {
+    from{
+        transform:translateX(-50px);
     }
-
-    #cpost{
-        justify-content: center;
-        text-align: center;
+    to{
+        transform:translateX(0px);
     }
-} */
+}

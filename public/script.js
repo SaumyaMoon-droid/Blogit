@@ -16,12 +16,32 @@ form.addEventListener("submit", async (event)=>{
             tags : tags,
         })
     })
+    
     const data= await response.json();
     alert(data.message);
     form.reset();
     location.reload();
 })
 
+
+
+async function yourAcc(){
+    const ID=localStorage.getItem("ID");
+    const username=localStorage.getItem("username");
+    const response=await fetch(`/api/users/${ID}`,{
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            ID : ID,
+            username: username
+        })
+    })
+    const accdata= await response.json();
+    console.log(accdata.message);
+    location.reload();
+}
+
+//like function
 async function likePost(postID){
     const userID=localStorage.getItem("userID");
     if(!(userID)){
@@ -45,6 +65,9 @@ async function loadPosts(){
     const posts= await response.json();
     const feedBox=document.getElementById("feedBox");
     const currentUserId=localStorage.getItem("userID");
+    const yourAcc=document.getElementById("accName");
+
+    yourAcc.textContent=localStorage.getItem("username");
 
     posts.forEach((post)=>{
         // MySQL may return column names in different case, so read both
@@ -52,7 +75,7 @@ async function loadPosts(){
         const postOwnerId = post.user_ID ?? post.user_id;
         const postBox=document.createElement("div");
         postBox.innerHTML=`
-        <div style="background-color: white; width: 300px;">
+        <div class="prevpost">
         <h3>${post.title}</h3>
         <p><b>Posted By:</b>${post.USERNAME ?? post.username}</p>
         <p>${post.content}</p>
@@ -83,6 +106,7 @@ async function loadPosts(){
             })
             postBox.appendChild(deleteBtn);
         }
+        
         feedBox.appendChild(postBox)
     })
 }
