@@ -82,7 +82,7 @@ async function loadPosts(){
         <p><b>${post.tags}</b></p>
         <button 
             onClick="likePost(${post.id})"
-            style=" border: none; cursor: pointer;"
+            style=" border: none; cursor: pointer; background-color: rgb(255, 246, 234);;"
         >
         ❤️${post.likeCount}
         </button>
@@ -91,7 +91,7 @@ async function loadPosts(){
         if(currentUserId !== null && String(currentUserId)===String(postOwnerId)){
             const deleteBtn=document.createElement("button");
             deleteBtn.innerText="delete";
-            deleteBtn.innerHTML=`<div class="deletebtn" style="background-color: brown; color:bisque;">Delete</div>`;
+            deleteBtn.innerHTML=`<div class="deletebtn">Delete</div>`;
             deleteBtn.addEventListener("click",  async ()=>{
                 const response= await fetch(`/api/posts/${postId}`,{
                     method: "DELETE",
@@ -118,4 +118,9 @@ localStorage.removeItem("userID");
 localStorage.removeItem("username");
 alert("logout successful");
 window.location.href="login.html";
+})
+
+const myp=document.querySelector(".mypbtn");
+myp.addEventListener("click", function() {
+    window.location.href="Youraccount.html";
 })

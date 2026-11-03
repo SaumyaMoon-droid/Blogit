@@ -320,3 +320,32 @@ form:not(#login):not(#signin){
         transform:translateX(0px);
     }
 }
+.mypbtn{
+    background-color: brown;
+     border: solid 2px brown;
+    color:bisque;
+    transition: background-color 0.25s;
+    border-radius: 8px;
+    transition: transform 0.25s;
+    height: 30px;
+    width: 100px;
+}
+.mypbtn:hover{
+background-color: rgb(134, 36, 36) ;
+transform: translate(-2px,-2px);
+}
+
+.homebtn{
+    background-color: brown;
+     border: solid 2px brown;
+    color:bisque;
+    transition: background-color 0.25s;
+    border-radius: 8px;
+    transition: transform 0.25s;
+    height: 30px;
+    width: 100px;
+}
+.homebtn:hover{
+background-color: rgb(134, 36, 36) ;
+transform: translate(-2px,-2px);
+}

@@ -162,6 +162,19 @@ app.post("/api/posts/:id/like",(req,res)=>{
     })
 })
 
+app.get("/api/users/:id/posts", (req, res) => {
+    const sql = `SELECT POSTS.*, USERS.USERNAME, 
+        (SELECT COUNT(*) FROM LIKES WHERE LIKES.postId = POSTS.id) AS likeCount
+        FROM POSTS
+        JOIN USERS ON POSTS.user_ID = USERS.ID
+        WHERE POSTS.user_ID = ?
+        ORDER BY POSTS.CREATED_AT DESC`;
+    db.query(sql, [req.params.id], (err, results) => {
+        if (err) return res.status(500).json({ message: "Error" });
+        res.json(results);
+    });
+});
+
 app.listen(PORT, () => {
          console.log(`Server running on http://localhost:${PORT}`);});
 
