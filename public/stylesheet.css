@@ -169,21 +169,21 @@ background-color: rgb(134, 36, 36);
 
 .logout1{
      background-color: brown;
+     border: solid 2px brown;
     color:bisque;
-    position: fixed;
-    top: 20px;
-    right: 24px;
-    height: 30px;
-    width: 75px;
-    z-index: 2;
+    position: relative;
+    bottom: -50px;
+    left: 24px;
     transition: background-color 0.25s;
     border-radius: 8px;
     transition: transform 0.25s;
+    height: 30px;
+    width: 100px;
 }
 
 .logout1:hover{
 background-color: rgb(134, 36, 36) ;
-transform: translate(-5px,5px);
+transform: translate(-2px,-2px);
 }
 
 #cpost{
@@ -251,6 +251,11 @@ form:not(#login):not(#signin){
     border: 0;
     border-radius: 5px;
     cursor: pointer;
+    transition: transform 0.25s;
+}
+
+.postbtn:hover{
+    transform: translate(-2px,-2px);
 }
 
 .fypbox{
