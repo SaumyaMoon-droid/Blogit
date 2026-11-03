@@ -59,7 +59,24 @@ async function likePost(postID){
     console.log(data.message);
     location.reload();
 }
-
+//dislike function
+async function dislikePost(postID){
+    const userID=localStorage.getItem("userID");
+    if(!(userID)){
+        alert("please log in");
+        return ;
+    }
+    const response=await fetch(`/api/posts/${postID}/dislike`,{
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            userID : userID,
+        })
+    })
+    const data= await response.json();
+    console.log(data.message);
+    location.reload();
+}
 async function loadPosts(){
     const response=await fetch("/api/posts");
     const posts= await response.json();
@@ -81,10 +98,17 @@ async function loadPosts(){
         <p>${post.content}</p>
         <p><b>${post.tags}</b></p>
         <button 
-            onClick="likePost(${post.id})"
+            onClick="likePost(${postId})"
             style=" border: none; cursor: pointer; background-color: rgb(255, 246, 234);;"
         >
         ❤️${post.likeCount}
+        </button>
+        <div>
+        <button 
+            onClick="dislikePost(${postId})"
+            style=" border: none; cursor: pointer; background-color: rgb(255, 246, 234);;"
+        >
+        👎${post.dislikeCount}
         </button>
         `;
         // localStorage always returns a string, the DB returns a number -> compare as strings

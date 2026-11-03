@@ -43,7 +43,13 @@ app.get("/api/posts",(req,res)=>{
                 SELECT COUNT (*)
                 FROM LIKES
                 WHERE LIKES.postId=posts.id
-            ) AS likeCount
+            ) AS likeCount,
+            (
+            SELECT COUNT(*) 
+            FROM DISLIKES 
+            WHERE DISLIKES.postId = posts.id
+            ) AS dislikeCount
+
              FROM POSTS
              JOIN USERS ON POSTS.user_ID=users.ID
              ORDER BY POSTS.CREATED_AT DESC
@@ -161,10 +167,50 @@ app.post("/api/posts/:id/like",(req,res)=>{
         }
     })
 })
-
+app.post("/api/posts/:id/dislike",(req,res)=>{
+    const postId=req.params.id;
+    const userId=req.body.userID;
+    const checkSql=`
+    SELECT * FROM DISLIKES
+    WHERE userId=? AND postId=? 
+    `;
+    db.query(checkSql, [userId,postId], (err,results)=>{
+         if(err){
+            console.log("Error",err);
+            return res.status(500).json({
+                message : "error in like count"
+            });
+        }
+        if(results.length>0){
+            const deleteSql=`DELETE FROM DISLIKES WHERE userId=? AND postId=?`;
+            db.query(deleteSql,[userId,postId],(err)=>{
+                if(err){
+            console.log("Error",err);
+            return res.status(500).json({
+                message : "error in dislike count"
+            });
+        }
+        res.json({message : "Unliked!"});
+            })
+        }
+        else{
+            const insertSql=`INSERT INTO DISLIKES (userId,postId) VALUES (?,?)`;
+            db.query(insertSql,[userId,postId],(err)=>{
+                if(err){
+            console.log("Error",err);
+            return res.status(500).json({
+                message : "error in unlike count"
+            });
+        }
+        res.json({message: "Disliked!"});
+            })
+        }
+    })
+})
 app.get("/api/users/:id/posts", (req, res) => {
     const sql = `SELECT POSTS.*, USERS.USERNAME, 
-        (SELECT COUNT(*) FROM LIKES WHERE LIKES.postId = POSTS.id) AS likeCount
+        (SELECT COUNT(*) FROM LIKES WHERE LIKES.postId = POSTS.id) AS likeCount,
+        (SELECT COUNT(*) FROM DISLIKES WHERE DISLIKES.postId = POSTS.id) AS dislikeCount
         FROM POSTS
         JOIN USERS ON POSTS.user_ID = USERS.ID
         WHERE POSTS.user_ID = ?
@@ -174,6 +220,39 @@ app.get("/api/users/:id/posts", (req, res) => {
         res.json(results);
     });
 });
+// app.get("/api/posts",(req,res)=>{
+//     const sql=`SELECT POSTS.*,USERS.USERNAME, 
+//             (
+//                 SELECT COUNT (*)
+//                 FROM DISLIKES
+//                 WHERE DISLIKES.postId=posts.id
+//             ) AS dislikeCount
+//              FROM POSTS
+//              JOIN USERS ON POSTS.user_ID=users.ID
+//              ORDER BY POSTS.CREATED_AT DESC
+//     `;
+//     db.query(sql,(err,results)=>{
+//         if(err){
+//         console.log("ERROR:",err);
+//         return res.status(500).json({
+//             message: "Error"
+//         });
+//     }
+//     res.json(results);
+//     });
+// });
+// app.get("/api/users/:id/posts", (req, res) => {
+//     const sql = `SELECT POSTS.*, USERS.USERNAME, 
+//         (SELECT COUNT(*) FROM DISLIKES WHERE DISLIKES.postId = POSTS.id) AS dislikeCount
+//         FROM POSTS
+//         JOIN USERS ON POSTS.user_ID = USERS.ID
+//         WHERE POSTS.user_ID = ?
+//         ORDER BY POSTS.CREATED_AT DESC`;
+//     db.query(sql, [req.params.id], (err, results) => {
+//         if (err) return res.status(500).json({ message: "Error" });
+//         res.json(results);
+//     });
+// });
 
 app.listen(PORT, () => {
          console.log(`Server running on http://localhost:${PORT}`);});
