@@ -34,7 +34,7 @@ h1{
     display: flex;
     justify-content: center;
     color: brown;
-    font-size:  50px;
+    font-size:  65px;
 }
 h2{
     display:flex;
@@ -104,7 +104,20 @@ background-color: rgb(134, 36, 36);
     left: 200px;
     color:brown;
 }
-
+.titlebox2{
+      animation: drift 5s ease-in-out infinite;
+}
+@keyframes drift{
+    0%,100%{
+        transform: translate(0,0);
+    }
+    33%{
+        transform: translate(0px,5px);
+    }
+    66%{
+        transform: translate(0px,-5px);
+    }
+}
 #post{
     position: absolute;
     height: 200px;
