@@ -19,7 +19,9 @@ body{
 .animation-ex{
     animation: moveUp 1s ease-out;  
 }
-
+.loginTitle{
+    animation: jump 2s ease-in-out infinite;
+}
 @keyframes moveUp {
     from{
         transform: translateY(150px);
@@ -29,6 +31,17 @@ body{
     }
 }
 
+@keyframes jump {
+    0%,100%{
+        transform: translateY(0px);
+    }
+    33%{
+        transform: translateY(5px);
+    }
+    66%{
+        transform: translateY(-5px);
+    }
+}
 
 h1{
     display: flex;
@@ -39,7 +52,7 @@ h1{
 h2{
     display:flex;
     justify-content: center;
-    margin-top: -30px;
+    margin-top: -50px;
 }
 
 #login{
@@ -48,6 +61,7 @@ h2{
     align-items: center;
     gap: 20px;
 }
+
 .loginbtn{
     border: solid 2px brown;
     border-radius: 8px;
@@ -104,18 +118,24 @@ background-color: rgb(134, 36, 36);
     left: 200px;
     color:brown;
 }
-.titlebox2{
-      animation: drift 5s ease-in-out infinite;
+.webTitle1 span {
+    display: inline-block;
+      animation: drift 1s ease-in-out ;
+      text-shadow: 
+      -2px -2px 0 rgb(0, 0, 0);
+      ;
+      animation-delay:calc(var(--i)*0.1s);
+      font-size: 100px;
 }
 @keyframes drift{
     0%,100%{
-        transform: translate(0,0);
+        transform: translateY(0) rotate(0deg);
     }
     33%{
-        transform: translate(0px,5px);
+        transform: translateY(10x) rotate(0deg);
     }
     66%{
-        transform: translate(0px,-5px);
+        transform: translateY(-10px) rotate(0deg);
     }
 }
 #post{
