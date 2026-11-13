@@ -1,5 +1,5 @@
 body{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4)),url("bgfs.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5)),url("bgfs.jpg");
     background-repeat: repeat;
     background-size: cover;
     background-position: center ;
@@ -253,7 +253,7 @@ form:not(#login):not(#signin){
     box-sizing: border-box;
     width: 100%;
     padding: 10px;
-    border: 1px solid brown;
+    border: 2px dashed brown;
     border-radius: 5px;
     background-color: rgb(255, 246, 234);
     color: brown;
@@ -286,7 +286,7 @@ form:not(#login):not(#signin){
 
 .fypbox{
     top: 175px;
-    border: dotted 2px bisque;
+    border: dashed 2px bisque;
     width: 800px;
     padding: 20px;
     margin: 20px auto;
@@ -329,7 +329,6 @@ form:not(#login):not(#signin){
     background-color: rgb(255, 246, 234) !important;
 }
 .accbox{
-    border: solid 2px brown;
     border-radius:8px;
     width: 150px;
     height: 200px;
@@ -338,6 +337,7 @@ form:not(#login):not(#signin){
     left: 10px;
     background-color: rgb(255, 246, 234);
     transition: transform 0.5s;
+    border: dashed 2px brown;
 }
 
 .accbox:hover{
