@@ -1,21 +1,21 @@
 body{
-    background-image: linear-gradient(rgba(232, 140, 140,0.4),rgba(0, 0, 0, 0.4)),url("blog.jpg");
-    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4)),url("bgfs.jpg");
+    background-repeat: repeat;
     background-size: cover;
     background-position: center ;
     background-attachment: fixed ;
 }
 
 .mybox{
-    border: solid 2px brown ;
+    border: solid px bisque ;
     height: 300px;
     width: 500px;
     background-color: rgba(232, 140, 140,0.4);
     padding: 20px;
     margin: 20px auto;
     border-radius: 8px;
+    backdrop-filter: blur(10px);
 }
-
 .animation-ex{
     animation: moveUp 1s ease-out;  
 }
@@ -46,13 +46,17 @@ body{
 h1{
     display: flex;
     justify-content: center;
-    color: brown;
     font-size:  65px;
+    color:bisque;
+    text-shadow: 2px 2px 0 black;
+    -webkit-text-stroke: 1px #111111;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.8));
 }
+
 h2{
     display:flex;
     justify-content: center;
-    margin-top: -50px;
+    margin-top: -65px;
 }
 
 #login{
@@ -105,7 +109,7 @@ background-color: rgb(134, 36, 36);
     border: solid 2px brown ;
     height: 590px;
     width: 100px;
-    background-color: rgb(232, 140, 140);
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     margin: 20px auto;
     border-radius: 8px;
@@ -184,17 +188,7 @@ background-color: rgb(134, 36, 36);
     size: 40px;
     color: brown;
 }
-.fypbox{
-    border: solid 2px brown ;
-    width: 800px;
-    background-color: rgb(254, 243, 230);
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    position: absolute;
-    left: 50px;
-    top: 200px;
-}
+
 
 .postbtn:hover{
     background-color: rgb(134, 36, 36) ;
@@ -206,7 +200,6 @@ background-color: rgb(134, 36, 36);
     color:bisque;
     position: relative;
     bottom: -50px;
-    left: 24px;
     transition: background-color 0.25s;
     border-radius: 8px;
     transition: transform 0.25s;
@@ -216,7 +209,7 @@ background-color: rgb(134, 36, 36);
 
 .logout1:hover{
 background-color: rgb(134, 36, 36) ;
-transform: translate(-2px,-2px);
+ transform: scale(1.1);
 }
 
 #cpost{
@@ -288,17 +281,25 @@ form:not(#login):not(#signin){
 }
 
 .postbtn:hover{
-    transform: translate(-2px,-2px);
+    transform: scale(1.05);
 }
 
 .fypbox{
     top: 175px;
+    border: dotted 2px bisque;
+    width: 800px;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    position: absolute;
+    left: 50px;
     left: calc(50% - 400px);
     box-sizing: border-box;
     width: 700px;
     padding: 20px;
-    border-color: brown;
-    background-color: rgba(254, 243, 230, 0.685);
+    background-color: rgba(232, 140, 140,0.4);;
+     backdrop-filter: blur(5px);
+
 }
 
 
@@ -365,7 +366,7 @@ form:not(#login):not(#signin){
 }
 .mypbtn:hover{
 background-color: rgb(134, 36, 36) ;
-transform: translate(-2px,-2px);
+transform: scale(1.1);
 }
 
 .homebtn{
@@ -380,5 +381,5 @@ transform: translate(-2px,-2px);
 }
 .homebtn:hover{
 background-color: rgb(134, 36, 36) ;
-transform: translate(-2px,-2px);
+transform: scale(1.1);
 }
